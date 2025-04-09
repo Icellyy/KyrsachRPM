@@ -1,0 +1,27 @@
+namespace AirTransportSystem
+{
+    class Flight
+    {
+        public string FlightNumber { get; set; }
+        public Airport Departure { get; set; }
+        public Airport Destination { get; set; }
+        public DateTime DepartureTime { get; set; }
+        public DateTime ArrivalTime { get; set; }
+        public Airplane Airplane { get; set; }
+        public List<Passenger> Passengers { get; set; }
+
+        public Flight()
+        {
+            Passengers = new List<Passenger>();
+        }
+
+        public void Print()
+        {
+            Console.WriteLine($"Рейс: {FlightNumber}");
+            Console.WriteLine($"Отправление: {Departure?.Name} ({Departure?.Code}) - {DepartureTime:dd.MM.yyyy HH:mm}");
+            Console.WriteLine($"Назначение: {Destination?.Name} ({Destination?.Code}) - {ArrivalTime:dd.MM.yyyy HH:mm}");
+            Console.WriteLine($"Самолет: {Airplane?.Model} ({Airplane?.RegistrationNumber})");
+            Console.WriteLine($"Пассажиры: {Passengers.Count}/{Airplane?.Capacity ?? 0}");
+        }
+    }
+}
